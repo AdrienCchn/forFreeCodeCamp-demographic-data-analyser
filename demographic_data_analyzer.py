@@ -3,7 +3,7 @@ import pandas as pd
 def calculate_demographic_data(print_data=True):
     # Read data from file
     DATA_FILENAME = "adult.data.csv"
-    df = pd.read_csv(DATA_FILENAME, header=None, sep=",", index_col=False, skipinitialspace=True, names=["age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week", "native-country", "income-class"])
+    df = pd.read_csv(DATA_FILENAME, sep=",", index_col=False, skipinitialspace=True)
     
     
     # How many of each race are represented in this dataset? This should be a Pandas series with race names as the index labels.
@@ -20,7 +20,7 @@ def calculate_demographic_data(print_data=True):
     
     # What percentage of people with advanced education (`Bachelors`, `Masters`, or `Doctorate`) make more than 50K?
     # What percentage of people without advanced education make more than 50K?
-    bool_sup50K = df["income-class"] == ">50K"
+    bool_sup50K = df["salary"] == ">50K"
     bool_higher_education = df["education"].isin(["Bachelors", "Masters", "Doctorate"])
     
     
